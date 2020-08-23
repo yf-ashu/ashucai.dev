@@ -1,0 +1,2 @@
+# ashucai.dev
+ blog
