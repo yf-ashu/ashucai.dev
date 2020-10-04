@@ -22,12 +22,15 @@ module.exports = {
     },
     plugins: [
         "react",
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "simple-import-sort"
     ],
     rules: {
         "indent": ["error", 4],
         'react/jsx-filename-extension': [2, { 'extensions': ['.js', '.jsx', '.ts', '.tsx'] }],
-        "react/jsx-indent": ["error", 4]
+        "react/jsx-indent": ["error", 4],
+        "simple-import-sort/sort": "error"
+
 
     }
 };

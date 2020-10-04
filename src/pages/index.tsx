@@ -1,24 +1,16 @@
-import React from 'react';
-import Link from 'next/link';
-import styled from 'styled-components';
 import fs from 'fs';
+import Link from 'next/link';
 import path from 'path';
-import {
-    space, layout, typography, color,
-} from 'styled-system';
+import React from 'react';
+import styled from 'styled-components';
 
-function App({ post }) {
+
+function App({ post }: { post: number[] }) {
     console.log({ post });
     return (
         <div>
-            <Link href={`/posts/${post[0]}`}>
-                {post[0]}
-            </Link>
-            <Link href={`/posts/${post[1]}`}>
-                {/* <Time /> */}
-                <div>a</div>
+            123
 
-            </Link>
         </div>
     );
 }
@@ -31,20 +23,23 @@ export async function getStaticProps() {
     // https://github.com/vercel/next.js/blob/f46ddc693302b2f32c5aadfb91d82d9975ee014a/examples/blog-starter/lib/api.js#L36
     const postArray = fs.readdirSync('./src/posts');
 
-    // const directoryLevelInfo = fs
-    //     .readdirSync('documentation', 'utf8')
-    //     .map((item) => {
-    //         const path = `documentation/${item}`;
+    const directoryLevelInfo = fs
+        .readdirSync('./src/posts', 'utf8')
+        .map((item) => {
+            console.log({ item });
+            const itempath = `./src/posts/${item}`;
 
-    //         const isDir = fs.lstatSync(path).isDirectory();
+            const isDir = fs.lstatSync(itempath).isDirectory();
 
-    //         return {
-    //             name: item,
-    //             path,
-    //             isDir,
-    //         };
-    //     })
-    //     .sort((a, b) => (b.isDir - a.isDir || a.name > b.name ? 1 : -1));
+            return {
+                name: item,
+                path,
+                isDir,
+            };
+        });
+    // .sort((a, b) => (b.isDir - a.isDir || a.name > b.name ? 1 : -1));
+
+    console.log({ directoryLevelInfo });
     const post = postArray.map((item) => item.split('.')[0]);
     return { props: { post } };
 }
