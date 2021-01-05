@@ -8,7 +8,11 @@ module.exports = {
     },
     extends: [
         "plugin:react/recommended",
-        "airbnb"
+        "airbnb",
+        "eslint:recommended",
+        "plugin:import/warnings",
+        "plugin:import/errors",
+        "plugin:import/typescript"
     ],
     parser: "@typescript-eslint/parser",
     parserOptions: {
@@ -23,13 +27,32 @@ module.exports = {
     plugins: [
         "react",
         "@typescript-eslint",
-        "simple-import-sort"
+        "jsx-a11y",
+        "import"
     ],
+    // "settings": {
+    //     "import/extensions": [
+    //         ".js",
+    //         ".jsx",
+    //         ".ts", 
+    //         ".tsx"
+    //         ]
+    // },
     rules: {
-        "indent": ["error", 4],
-        'react/jsx-filename-extension': [2, { 'extensions': ['.js', '.jsx', '.ts', '.tsx'] }],
-        "react/jsx-indent": ["error", 4],
-        "simple-import-sort/sort": "error"
+        "indent": [2, "tab", { "ignoredNodes": ["JSXElement"] }],
+        "react/jsx-indent": [2, "tab"],
+        "react/no-array-index-key": [2],
+        "react/jsx-indent-props": [2, "tab"],
+        "react/jsx-filename-extension": [2, { 'extensions': ['.js', '.jsx', '.ts', '.tsx'] }],
+        "import/extensions": [2, "never"],
+        "react/destructuring-assignment": [2, "always"],
+        "no-tabs": 0,
+        "object-curly-newline": [2, "never"],
+        "no-mixed-spaces-and-tabs":[2, "smart-tabs"],
+        "import/order": [2, {"groups": ["index", "sibling", "parent", "internal", "external", "builtin", "object"]}],
+        "max-lines":[2, {"max": 120}],
+        "object-property-newline":[2, { "allowAllPropertiesOnSameLine":false}]
+        
 
 
     }
