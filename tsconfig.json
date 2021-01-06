@@ -12,7 +12,7 @@
       "dom"
     ],
     "strict": true,
-    "noImplicitAny": true,
+    // "noImplicitAny": true,
     "removeComments": true,
     "resolveJsonModule": true,
     "baseUrl": ".",

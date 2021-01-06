@@ -17,17 +17,14 @@ const typeDefs = gql`
 }
 
 `;
-const resolvers = { Query: { blog: async (parent, { postId }, context) => {
+const resolvers = { Query: { blog: async (parent:any, { postId }:{postId:string}, context:any) => {
 	const { content } = await getRawArticleByPostId(postId);
 	return { content };
 } },
 
-Blog: { frontMatter: async (parent, { postId }, context) => {
-	const test2 = await getRawArticleByPostId(postId);
-	return 	{ title: '2' };
-} },
+Blog: { frontMatter: async (parent:any, { postId }:{postId:string}, context:any) => ({ title: '2' }) },
 
-BlogFrontMatter: { frontMatter: async (parent, { postId }, context) => {
+BlogFrontMatter: { frontMatter: async (parent:any, { postId }:{postId:string}, context:any) => {
 	const test2 = await getRawArticleByPostId(postId);
 	return 	{ title: '3' };
 } } };

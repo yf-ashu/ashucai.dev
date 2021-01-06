@@ -1,6 +1,6 @@
 import Header from '../components/Layout/Header';
 import theme from '../components/Layout/theme';
-import SEO from './next-seo.config';
+import SEO from '../utilities/next-seo.config';
 import MdxComponentStyle from '../components/Layout/MdxComponentStyle';
 import { ChakraProvider,
 	CSSReset } from '@chakra-ui/react';

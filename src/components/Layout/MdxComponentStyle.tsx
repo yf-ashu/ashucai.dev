@@ -8,12 +8,45 @@ import { Box,
 	Text,
 	Divider,
 	useColorMode } from '@chakra-ui/react';
-import React from 'react';
+import React, { FC } from 'react';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import theme from 'prism-react-renderer/themes/shadesOfPurple';
 import styled from '@emotion/styled';
 
-const Table = (props) => (
+type Language =
+| 'markup'
+| 'bash'
+| 'clike'
+| 'c'
+| 'cpp'
+| 'css'
+| 'javascript'
+| 'jsx'
+| 'coffeescript'
+| 'actionscript'
+| 'css-extr'
+| 'diff'
+| 'git'
+| 'go'
+| 'graphql'
+| 'handlebars'
+| 'json'
+| 'less'
+| 'makefile'
+| 'markdown'
+| 'objectivec'
+| 'ocaml'
+| 'python'
+| 'reason'
+| 'sass'
+| 'scss'
+| 'sql'
+| 'stylus'
+| 'tsx'
+| 'typescript'
+| 'wasm'
+| 'yaml';
+const Table:FC<any> = (props) => (
 	<Box overflowX="auto" w="full">
 		<Box
 			as="table"
@@ -25,12 +58,10 @@ const Table = (props) => (
 		/>
 	</Box>
 );
-
-const THead = (props) => {
+const THead = (props:any) => {
 	const { colorMode } = useColorMode();
 	const bg = { light: 'gray.50',
 	  dark: 'whiteAlpha.100' };
-
 	return (
 		<Box
 			as="th"
@@ -43,7 +74,7 @@ const THead = (props) => {
 	);
 };
 
-const TData = (props) => (
+const TData = (props:any) => (
 	<Box
 		as="td"
 		p={2}
@@ -55,7 +86,7 @@ const TData = (props) => (
 	/>
 );
 
-const Quote = (props) => {
+const Quote = (props:any) => {
 	const { colorMode } = useColorMode();
 	const bgColor = { light: 'cyan.50',
 	  dark: 'cyan.800' };
@@ -101,56 +132,64 @@ const LineNo = styled.span`
 const LineContent = styled.span`
   display: table-cell;
 `;
-const CustomCode = ({ children, className }) => {
-	const language = className.replace(/language-/, '');
+const CustomCode = ({ children, className }:{children:React.ReactNode, className:string}) => {
+	const language = className.replace(/language-/, '')as Language;
 	return (
-		<Highlight {...defaultProps} theme={theme} code={children.trim()} language={language}>
-			{({ className, style, tokens, getLineProps, getTokenProps }) => (
-				<Pre className={className} style={style}>
-					{tokens.map((line, i) => (
-						<Line
-							key={i}
-							{...getLineProps({ line,
-								key: i })}
-						>
-							<LineNo>{i + 1}</LineNo>
-							<LineContent>
-								{line.map((token, key) => (
-									<span
-										key={`${key}-${token}`}
-										{...getTokenProps({ token,
-											key })}
-									/>
+		<>
+			{ children && (
+			<Highlight
+				{...defaultProps}
+				theme={theme}
+				code={children.toString().trim()}
+				language={language}
+			>
+				{({ className, style, tokens, getLineProps, getTokenProps }) => (
+					<Pre className={className} style={style}>
+						{tokens.map((line, i) => (
+							<Line
+								key={i}
+								{...getLineProps({ line,
+									key: i })}
+							>
+								<LineNo>{i + 1}</LineNo>
+								<LineContent>
+									{line.map((token, key) => (
+										<span
+											key={`${key}-${token}`}
+											{...getTokenProps({ token,
+												key })}
+										/>
 				  ))}
-							</LineContent>
-						</Line>
-					))}
-				</Pre>
+								</LineContent>
+							</Line>
+						))}
+					</Pre>
+				)}
+			</Highlight>
 			)}
-		</Highlight>
-
+		</>
 	);
 };
 
-const MdxComponentStyle = { h1: (props) => <Heading as="h1" size="2xl" my={4} {...props} />,
-	h2: (props) => <Heading as="h2" fontWeight="bold" size="xl" my={4} {...props} />,
-	h3: (props) => <Heading as="h3" size="lg" fontWeight="bold" my={3} {...props} />,
-	h4: (props) => <Heading as="h4" size="md" fontWeight="bold" my={3} {...props} />,
-	h5: (props) => <Heading as="h5" size="sm" fontWeight="bold" my={3} {...props} />,
-	h6: (props) => <Heading as="h5" size="xs" fontWeight="bold" my={3} {...props} />,
-	inlineCode: (props) => (
+const MdxComponentStyle = { h1: (props:any) => <Heading as="h1" size="2xl" my={4} {...props} />,
+	h2: (props:any) => <Heading as="h2" fontWeight="bold" size="xl" my={4} {...props} />,
+	h3: (props:any) => <Heading as="h3" size="lg" fontWeight="bold" my={3} {...props} />,
+	h4: (props:any) => <Heading as="h4" size="md" fontWeight="bold" my={3} {...props} />,
+	h5: (props:any) => <Heading as="h5" size="sm" fontWeight="bold" my={3} {...props} />,
+	h6: (props:any) => <Heading as="h5" size="xs" fontWeight="bold" my={3} {...props} />,
+	inlineCode: (props:any) => (
 		<Code variantColor="yellow" fontSize="0.8em" {...props} color="#ff3434" px={1} />
 	),
-	br: (props) => <Box height="24px" {...props} />,
-	hr: (props) => <Divider my={4} w="100%" h="1em" color="gray.200" />,
+	br: (props:any) => <Box height="24px" {...props} />,
+	hr: () => <Divider my={4} w="100%" h="1em" color="gray.200" />,
 	table: Table,
 	th: THead,
 	td: TData,
-	a: (props) => <Link color="#58b0b4" isExternal {...props} />,
-	p: (props) => <Text as="p" mt={4} lineHeight="tall" {...props} />,
-	ul: (props) => <Box as="ul" pt={2} pl={4} ml={2} {...props} />,
-	ol: (props) => <Box as="ol" pt={2} pl={4} ml={2} {...props} />,
-	li: (props) => <Box as="li" pb={1} {...props} />,
+	a: (props:any) => <Link color="#58b0b4" isExternal {...props} />,
+	p: (props:any) => <Text as="p" mt={4} lineHeight="tall" {...props} />,
+	ul: (props:any) => <Box as="ul" pt={2} pl={4} ml={2} {...props} />,
+	ol: (props:any) => <Box as="ol" pt={2} pl={4} ml={2} {...props} />,
+	li: (props:any) => <Box as="li" pb={1} {...props} />,
 	code: CustomCode,
 	blockquote: Quote };
 
