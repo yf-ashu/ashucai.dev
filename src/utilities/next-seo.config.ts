@@ -1,8 +1,8 @@
-const SEO = { openGraph: { type: 'website',
-	locale: 'en_IE',
-	url: 'https://www.url.ie/',
-	site_name: 'SiteName' },
-twitter: { handle: '@handle',
-	site: '@site',
-	cardType: 'summary_large_image' } };
+const SEO = { title: 'Ashu Dev',
+	description: 'web blog',
+	canonical: 'https://ashucai.dev/',
+	openGraph: { type: 'website',
+		locale: 'zh-TW',
+		url: 'https://ashucai.dev/',
+		site_name: 'Ashu Dev' } };
 export default SEO;
