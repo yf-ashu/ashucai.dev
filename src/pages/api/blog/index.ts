@@ -29,8 +29,7 @@ BlogFrontMatter: { frontMatter: async (parent:any, { postId }:{postId:string}, c
 	return 	{ title: '3' };
 } } };
 
-const apolloServer = new ApolloServer({ typeDefs,
-	resolvers });
+const apolloServer = new ApolloServer({ typeDefs, resolvers });
 
 export const config = { api: { bodyParser: false } };
 

@@ -27,7 +27,6 @@ const Header = () => {
 				width="100%"
 				as="nav"
 				p={8}
-				my={8}
 				mx="auto"
 			>
 

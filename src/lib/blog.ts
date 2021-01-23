@@ -9,7 +9,7 @@ export const getRawArticleByPostId = (postId: string): GrayMatterFile<string> =>
 	// const fileContents = matter(fs.readFileSync(postsDirectory, 'utf8'));
 	return fileContents;
 };
-// 文章要根據時間排序
+//TODO: 文章要根據時間排序
 export const getAllArticles = () => glob.sync('src/posts/**/*.md', {}).map((item) => item.replace(/\/index.md$/, '').split('/').slice(-1)[0]);
 export const getArticleInformation = () => {
 	const allPost = getAllArticles();

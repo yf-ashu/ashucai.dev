@@ -11,9 +11,7 @@ const theme = {
         medium: 600,
         bold: 700
     },
-    // icons: {
-    //     ...chakraTheme.icons,
-    // }
+
 };
 
 export default theme;

@@ -50,7 +50,7 @@ module.exports = {
         "object-curly-newline": [2, "never"],
         "no-mixed-spaces-and-tabs":[2, "smart-tabs"],
         "import/order": [2, {"groups": ["index", "sibling", "parent", "internal", "external", "builtin", "object"]}],
-        "max-lines":[2, {"max": 120}],
+        "max-lines":[2, {"max": 300}],
         "object-property-newline":[2, { "allowAllPropertiesOnSameLine":false}]
         
 

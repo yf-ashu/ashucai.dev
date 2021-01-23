@@ -10,7 +10,7 @@ import { AppProps } from 'next/app';
 import React, { FC } from 'react';
 import { MDXProvider } from '@mdx-js/react';
 
-const GlobalStyle: FC = ({ children }) => (
+const GlobalStyle: FC = ({ children}) => (
 	<>
 		<CSSReset />
 		<Global
