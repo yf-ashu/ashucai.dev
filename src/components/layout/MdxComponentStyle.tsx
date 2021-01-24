@@ -89,7 +89,7 @@ const TData = (props:any) => (
 const Quote = (props:any) => {
 	const { colorMode } = useColorMode();
 	const bgColor = { light: 'cyan.50',
-	  dark: 'cyan.800' };
+	  dark: '#97cfda' };
 
 	return (
 		<Alert
@@ -171,12 +171,12 @@ const CustomCode = ({ children, className }:{children:React.ReactNode, className
 	);
 };
 
-const MdxComponentStyle = { h1: (props:any) => <Heading as="h1" size="2xl" my={4} {...props} />,
-	h2: (props:any) => <Heading as="h2" fontWeight="bold" size="xl" my={4} {...props} />,
-	h3: (props:any) => <Heading as="h3" size="lg" fontWeight="bold" my={3} {...props} />,
-	h4: (props:any) => <Heading as="h4" size="md" fontWeight="bold" my={3} {...props} />,
-	h5: (props:any) => <Heading as="h5" size="sm" fontWeight="bold" my={3} {...props} />,
-	h6: (props:any) => <Heading as="h5" size="xs" fontWeight="bold" my={3} {...props} />,
+const MdxComponentStyle = { h1: (props:any) => <Heading as="h1" size="xl" my={4} {...props} />,
+	h2: (props:any) => <Heading as="h2" size="lg" fontWeight="bold" mt={10} mb={4} {...props} />,
+	h3: (props:any) => <Heading as="h3" fontSize="1.6rem" fontWeight="bold" mt={8} mb={3} {...props} />,
+	h4: (props:any) => <Heading as="h4" size="md" fontWeight="bold" mt={6} mb={2.5} {...props} />,
+	h5: (props:any) => <Heading as="h5" size="sm" fontWeight="bold" mt={6} mb={2.5} {...props} />,
+	h6: (props:any) => <Heading as="h5" size="xs" fontWeight="bold" mt={6} mb={2.5} {...props} />,
 	inlineCode: (props:any) => (
 		<Code variantColor="yellow" fontSize="0.8em" {...props} color="#ff3434" px={1} />
 	),
@@ -186,7 +186,7 @@ const MdxComponentStyle = { h1: (props:any) => <Heading as="h1" size="2xl" my={4
 	th: THead,
 	td: TData,
 	a: (props:any) => <Link color="#58b0b4" isExternal {...props} />,
-	p: (props:any) => <Text as="p" mt={4} lineHeight="tall" {...props} />,
+	p: (props:any) => <Text as="p" mt={2} lineHeight="tall" {...props} />,
 	ul: (props:any) => <Box as="ul" pt={2} pl={4} ml={2} {...props} />,
 	ol: (props:any) => <Box as="ol" pt={2} pl={4} ml={2} {...props} />,
 	li: (props:any) => <Box as="li" pb={1} {...props} />,

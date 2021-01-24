@@ -1,25 +1,23 @@
-import { Container, Flex, Heading, Text } from '@chakra-ui/react';
+import { Container, Flex, Heading } from '@chakra-ui/react';
 import React from 'react';
 
-function App({ allPost = [] }: { allPost: number[] }) {
+function App() {
+	// TODO: Container 抽出來
 	return (
 		<>
 			<Container
 				as="main"
 				justifyContent="center"
 				alignItems="flex-start"
-				maxWidth="900px"
 				width="100%"
 				mx="auto"
-				px={8}
+				pt={8}
 			>
 				<Flex>
-					<Heading letterSpacing="tight" mb={4} as="h1" size="2xl">
+					<Heading as="h1" size="xl">
 						Hey, I’m Ashu
 					</Heading>
-					<Text />
 				</Flex>
-
 			</Container>
 		</>
 	);

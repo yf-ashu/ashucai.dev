@@ -4,14 +4,11 @@ import { useColorMode, Button, Flex, Box, IconButton } from '@chakra-ui/react';
 import styled from '@emotion/styled';
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 
-// import Footer from './Footer';
-
-const StickyNav = styled(Flex)`
+const Nav = styled(Flex)`
   position: sticky;
   z-index: 10;
   top: 0;
-  backdrop-filter: saturate(180%) blur(20px);
-  transition: background-color 0.1 ease-in-out;
+  backdrop-filter: blur(20px);
 `;
 
 const Header = () => {
@@ -19,26 +16,26 @@ const Header = () => {
 
 	return (
 		<>
-			<StickyNav
+			<Nav
 				flexDirection="row"
 				justifyContent="flex-end"
 				alignItems="center"
-				maxWidth="900px"
 				width="100%"
 				as="nav"
-				p={8}
+				pt={4}
+				px={8}
+				mt={10}
 				mx="auto"
 			>
 
-				<Box>
-
+				<Box pt={4}>
 					<NextLink href="/blog" passHref>
-						<Button as="a" variant="link" p={[1, 4]}>
+						<Button as="a" variant="link" mr={3}>
 							Blog
 						</Button>
 					</NextLink>
 					<NextLink href="/" passHref>
-						<Button as="a" variant="link" p={[1, 4]}>
+						<Button as="a" variant="link" mx={8}>
 							About
 						</Button>
 					</NextLink>
@@ -49,10 +46,8 @@ const Header = () => {
 						variant="ghost"
 					/>
 				</Box>
+			</Nav>
 
-			</StickyNav>
-
-			{/* <Footer /> */}
 		</>
 	);
 };

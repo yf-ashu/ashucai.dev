@@ -3,7 +3,8 @@ import BlogPost from 'src/components/BlogPost';
 import { getAllArticles, getRawArticleByPostId } from 'src/lib/blog';
 import renderToString from 'next-mdx-remote/render-to-string';
 import hydrate from 'next-mdx-remote/hydrate';
-
+import slug from 'remark-slug';
+// import link from `remark-autolink-headings`
 // const fetcher = async (query, postId) => {
 // 	const apiUrl = '/api/blog';
 // 	const payloads: Config = { method: 'POST',
@@ -27,11 +28,31 @@ const Post = ({ source }:{source:string}) => {
 		<BlogPost content={contents} />
 	);
 };
+function transformer(ast) {
+	// slugs.reset();
+	console.log({ ast });
+	// visit(ast, 'heading', visitor);
 
+	function visitor(node) {
+		const data = node.data || (node.data = {});
+		const props = data.hProperties || (data.hProperties = {});
+		let { id } = props;
+
+		id = id ? slugs.slug(id, true) : slugs.slug(toString(node));
+
+		data.id = id;
+		props.id = id;
+	}
+}
+function slug2(ast) {
+	console.log({ ast });
+
+	// return transformer;
+}
 export async function getStaticProps({ params }:{params:{postId:string}}) {
 	const { postId } = params;
 	const { content } = await getRawArticleByPostId(postId);
-	const mdxSource = await renderToString(content);
+	const mdxSource = await renderToString(content, { mdxOptions: { remarkPlugins: [slug2] } });
 
 	return { props: { source: mdxSource } };
 }

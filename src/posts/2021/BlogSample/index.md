@@ -21,6 +21,10 @@ tags: [Markdown]
 
 > Test
 
+```javascript
+const test = '1'
+```
+
 1. Test
 2. 
 3.
@@ -34,5 +38,10 @@ tags: [Markdown]
 |  2 |  2 |  2 |  2 |  2 |
 |  1 |  1 |   1|  1 |   1|
 
+
+[Test](http://example.com)
+
+
+![profile](/static/image/profile.png)
 
 ---------------------------------------

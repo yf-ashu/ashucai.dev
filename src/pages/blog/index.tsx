@@ -8,10 +8,6 @@ import { Box,
 	Container,
 	Flex,
 	Heading,
-	Icon,
-	Input,
-	InputGroup,
-	InputRightElement,
 	Stack,
 	Tag,
 	Text } from '@chakra-ui/react';
@@ -26,46 +22,32 @@ const Blog = ({ frontMatter }:{frontMatter:FrontMatterProps[]}) => (
 			as="main"
 			justifyContent="center"
 			alignItems="flex-start"
-			m="0 auto 4rem auto"
-			maxWidth="700px"
+			width="100%"
+			mx="auto"
+			pt={8}
 		>
 			<Flex
 				flexDirection="column"
 				justifyContent="flex-start"
 				alignItems="flex-start"
 			>
-				<Heading letterSpacing="tight" mb={2} as="h1" size="2xl">
-
+				<Heading as="h1" size="xl">
 					Blog
 				</Heading>
-
-				{/* <InputGroup my={4} mr={4} w="100%">
-						<Input
-							aria-label="Search articles"
-							//   onChange={(e) => setSearchValue(e.target.value)}
-							placeholder="Search articles"
-						/>
-						<InputRightElement>
-							<Icon name="search" color="gray.300" />
-						</InputRightElement>
-					</InputGroup> */}
 			</Flex>
 
 			<Flex
 				flexDirection="column"
 				justifyContent="flex-start"
 				alignItems="flex-start"
-				mt={8}
 			>
-				<Heading letterSpacing="tight" mb={4} size="xl" fontWeight={700}>
-					All Posts
-				</Heading>
+
 				<Stack>
 					{frontMatter.map((item) => {
 						const { tags, title, summary, postId } = item;
 						return (
 							<>
-								<Box pt={5} as="div" key="title">
+								<Box pt={5} as="div" key={`${title}-article`}>
 									<NextLink href="/blog/[postId]" as={`/blog/${postId}`} passHref>
 										<Box as="a">
 											<Heading fontSize="xl">
@@ -75,7 +57,7 @@ const Blog = ({ frontMatter }:{frontMatter:FrontMatterProps[]}) => (
 										</Box>
 									</NextLink>
 									{tags.length > 0 && tags.map((tag) => (
-										<Tag as="a" href={`blog/${postId}`} mx={1} my={2} size="md" key={`${title}-${tag}`} variant="solid" backgroundColor="#76ced3">
+										<Tag as="a" href={`blog/${postId}`} mx={0.5} my={2} size="md" key={`${title}-${tag}`} variant="solid" backgroundColor="#76ced3">
 											{tag}
 										</Tag>
 									))}
