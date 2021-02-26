@@ -1,13 +1,14 @@
 ---
 title: '使用 Next.js 與 Chakra UI 建立部落格'
 createTime: '2021-01-23'
-updateTime: '2021-01-23'
-summary: ''
+updateTime: '2021-02-18'
+summary: '在整理 Notion 上的筆記時，發現自己搜集了很多資訊，但大部分都是碎片化的知識，並沒有將他有系統化的整理出來，
+因此決定來寫 Blog 訓練自己的思緒與表達。'
 tags: [Next.js, Chakra]
 ---
 ## 前言
-在整理 Notion 上的筆記時，發現自己搜集了很多資訊，但並沒有將他有系統化的整理出來。
-因此並決定來寫 Blog 訓練自己的思緒與表達。
+在整理 Notion 上的筆記時，發現自己搜集了很多資訊，但大部分都是碎片化的知識，並沒有將他有系統化的整理出來，。
+因此決定來寫 Blog 訓練自己的思緒與表達。
 
 既然要做了就乾脆按照自己的喜好以及想玩的技術來決定前進的方向。
 
@@ -30,7 +31,7 @@ Inspired from [leerob.io](https://leerob.io/)
 
 ### Tech Stack
 * Next.js
-* Chakra
+* Chakra UI
 * Netlify
 * axios
 * mdx
@@ -72,6 +73,19 @@ export default App;
 對於 `<Code>` 則使用 `prism-react-renderer` 來偵測語言來決定變數等的應顯示什麼顏色。
 
 ### Blog
+// 待補充 SSG 與 SSR 的比較與效能差異
+#### Blog Folder
+`blog.tsx` 中因為文章內容都是靜態檔案，不必透過 Server Render，因此利用 `getStaticProps` 在 build time 的時候去打 API 來取得 blog 文章列表（Static Generation）。
+
+blog list 中利用 `Next Link` 來連結到每篇文章，達到 [client-side route 與 SPA](https://nextjs.org/docs/routing/introduction#linking-between-pages) 的效果，但在連結有遇到一個問題：
+
+1. NextLink 並不是 a 標籤，因此要在裡面再包一層 a Tag 來讓 a Tag 有的一些原生行為呈現，例如 right click 時可以叫出 contextmenu。
+2. a Tag 中，因為轉導的行為已經由 `Next Link` 控制了，裡面那層 a tag 不必再多添加 href，但沒有實際設置 href 除了會導致 SEO 分數下降外，a Tag 本身預設的行為也還是無法呈現 ，因此在 NextLink 中使用 `passhref` 來將網址傳給 child component。
+
+`[postId].tsx` 為 Dynamic Route，
+
+#### Blog API
+
 
 
 ### MDX
