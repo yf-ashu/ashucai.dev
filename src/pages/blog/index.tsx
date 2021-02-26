@@ -48,7 +48,7 @@ const Blog = ({ frontMatter }:{frontMatter:FrontMatterProps[]}) => (
 						return (
 							<>
 								<Box pt={5} as="div" key={`${title}-article`}>
-									<NextLink href="/blog/[postId]" as={`/blog/${postId}`} passHref>
+									<NextLink href={`/blog/${encodeURIComponent(postId)}`} passHref>
 										<Box as="a">
 											<Heading fontSize="xl">
 												{title}
