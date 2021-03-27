@@ -29,7 +29,7 @@
     "@next/mdx": "^9.5.2",
     "apollo-server-micro": "^2.19.0",
     "axios": "^0.21.1",
-    "framer-motion": "^2.9.4",
+    "framer-motion": "^4.0.3",
     "glob": "^7.1.6",
     "gray-matter": "^4.0.2",
     "next": "^9.5.5",
