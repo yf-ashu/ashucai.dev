@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/yf-ashu/ashucai.dev#readme",
   "dependencies": {
-    "@chakra-ui/icons": "^1.0.1",
+    "@chakra-ui/icons": "^1.0.8",
     "@chakra-ui/react": "^1.1.5",
     "@emotion/react": "^11.0.0",
     "@emotion/styled": "^11.0.0",
