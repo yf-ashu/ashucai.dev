@@ -21,7 +21,7 @@
   "homepage": "https://github.com/yf-ashu/ashucai.dev#readme",
   "dependencies": {
     "@chakra-ui/icons": "^1.0.9",
-    "@chakra-ui/react": "^1.5.0",
+    "@chakra-ui/react": "^1.6.1",
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.3.0",
     "@mdx-js/loader": "^1.6.22",
