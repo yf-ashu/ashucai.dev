@@ -29,14 +29,14 @@ module.exports = {
         "jsx-a11y",
         "import"
     ],
-    // "settings": {
-    //     "import/extensions": [
-    //         ".js",
-    //         ".jsx",
-    //         ".ts",
-    //         ".tsx"
-    //         ]
-    // },
+    "settings": {
+        "import/extensions": [
+            ".js",
+            ".jsx",
+            ".ts",
+            ".tsx"
+            ]
+    },
     rules: {
         "indent": [2, "tab", { "ignoredNodes": ["JSXElement"] }],
         "react/jsx-indent": [2, "tab"],
@@ -44,7 +44,6 @@ module.exports = {
         "react/jsx-indent-props": [2, "tab"],
         "react/jsx-filename-extension": [2, { 'extensions': ['.js', '.jsx', '.ts', '.tsx'] }],
         "import/extensions": [2, "never"],
-        "react/destructuring-assignment": [2, "always"],
         "no-tabs": 0,
         "no-mixed-spaces-and-tabs":[2, "smart-tabs"],
         "import/order": [2, {"groups": ["index", "sibling", "parent", "internal", "external", "builtin", "object"]}],
