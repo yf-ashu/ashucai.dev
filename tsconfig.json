@@ -33,7 +33,6 @@
     "esModuleInterop": true,
     "moduleResolution": "node",
     "outDir": "dist",
-    "allowJs": true,
     "skipLibCheck": true,
     "noEmit": true,
     "isolatedModules": true

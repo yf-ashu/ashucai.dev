@@ -2,7 +2,6 @@ module.exports = {
     env: {
         browser: true,
         // es2021: true,
-        browser: true,
         es6: true,
         commonjs: true,
     },
@@ -34,7 +33,7 @@ module.exports = {
     //     "import/extensions": [
     //         ".js",
     //         ".jsx",
-    //         ".ts", 
+    //         ".ts",
     //         ".tsx"
     //         ]
     // },
@@ -47,12 +46,11 @@ module.exports = {
         "import/extensions": [2, "never"],
         "react/destructuring-assignment": [2, "always"],
         "no-tabs": 0,
-        "object-curly-newline": [2, "never"],
         "no-mixed-spaces-and-tabs":[2, "smart-tabs"],
         "import/order": [2, {"groups": ["index", "sibling", "parent", "internal", "external", "builtin", "object"]}],
         "max-lines":[2, {"max": 300}],
         "object-property-newline":[2, { "allowAllPropertiesOnSameLine":false}]
-        
+
 
 
     }
