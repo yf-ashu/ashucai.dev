@@ -32,7 +32,7 @@
     "framer-motion": "^4.1.17",
     "glob": "^7.1.7",
     "gray-matter": "^4.0.3",
-    "next": "^9.5.5",
+    "next": "^10.0.4",
     "next-mdx-remote": "3.0.2",
     "next-seo": "^4.24.0",
     "prism-react-renderer": "^1.2.1",
