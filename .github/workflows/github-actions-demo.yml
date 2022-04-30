@@ -16,5 +16,3 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
-name: Vercel Action
-uses: amondnet/vercel-action@v20.0.1
