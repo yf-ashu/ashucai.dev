@@ -46,7 +46,11 @@ const GlobalStyle: FC<Props> = ({ children }) => (
         {children}
     </>
 );
-
+const H1 = (
+    props: JSX.IntrinsicAttributes &
+        React.ClassAttributes<HTMLHeadingElement> &
+        React.HTMLAttributes<HTMLHeadingElement>
+) => <h1 style={{ color: 'tomato' }} {...props} />;
 // @ts-ignore
 const App = ({ Component, pageProps }: AppProps) => (
     <MDXProvider components={MdxComponentStyle}>
