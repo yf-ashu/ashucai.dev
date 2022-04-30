@@ -72,8 +72,6 @@ export default App;
 `MdxComponentStyle` 中設定了 Mdx 的樣式，可以根據 [html tag](https://mdxjs.com/getting-started?#mdxprovider) 分別進行不同的設定。
 對於 `<Code>` 則使用 `prism-react-renderer` 來偵測語言來決定變數等的應顯示什麼顏色。
 
-### Blog
-// 待補充 SSG 與 SSR 的比較與效能差異
 #### Blog Folder
 `blog.tsx` 中因為文章內容都是靜態檔案，不必透過 Server Render，因此利用 `getStaticProps` 在 build time 的時候去打 API 來取得 blog 文章列表（Static Generation）。
 
@@ -89,3 +87,5 @@ blog list 中利用 `Next Link` 來連結到每篇文章，達到 [client-side r
 
 
 ### MDX
+在使用 `MDXProvider` 時發現 `custom style` 都不會出來，交叉比對 `next-mdx-remote` 之後，發現 mdx 在 compare 時會需要 @babel/core 處理
+因此在下了 npm i -D @babel/core 之後樣式就出來了。

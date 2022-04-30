@@ -48,8 +48,8 @@ function slug2(ast: any) {
 export async function getStaticProps({ params }: { params: { postId: string } }) {
     const { postId } = params;
     const { content } = await getRawArticleByPostId(postId);
-    const mdxSource = await serialize(content, { mdxOptions: { remarkPlugins: [slug2] } });
-
+    const mdxSource = await serialize(content);
+    console.log({ mdxSource });
     return { props: { source: mdxSource } };
 }
 export async function getStaticPaths() {

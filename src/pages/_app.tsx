@@ -46,7 +46,6 @@ const GlobalStyle: FC<Props> = ({ children }) => (
         {children}
     </>
 );
-
 // @ts-ignore
 const App = ({ Component, pageProps }: AppProps) => (
     <MDXProvider components={MdxComponentStyle}>
