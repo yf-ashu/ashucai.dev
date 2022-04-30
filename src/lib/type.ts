@@ -25,6 +25,6 @@ export interface BlogPost {
 
 export interface BlogApi {
     getRawArticleByPostId: (postId: string) => matter.GrayMatterFile<string>;
-    getAllArticles: () => void
-    getPostInformation: () => void
+    getAllArticles: () => void;
+    getPostInformation: () => void;
 }
