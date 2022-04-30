@@ -1,11 +1,9 @@
-// const withMDX = require('@next/mdx')({
-//   extension: /\.mdx?$/,
-//   options: {
-//     remarkPlugins: [require('remark-autolink-headings'),
-//     ],
-//     rehypePlugins: []
-//   }
-// })
-// module.exports = withMDX({
-//   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx']
-// })
+module.exports = {
+		typescript: {
+				// !! WARN !!
+				// Dangerously allow production builds to successfully complete even if
+				// your project has type errors.
+				// !! WARN !!
+				ignoreBuildErrors: true,
+		},
+}
