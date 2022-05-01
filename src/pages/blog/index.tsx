@@ -12,20 +12,13 @@ const FilterTag = ({ frontMatter, filterTag }: { frontMatter: FrontMatterProps[]
     if (!filterTag && filterTag?.length !== 1) {
         return frontMatter;
     }
-
-    return frontMatter.filter((item) => {
-        const result = item.tags.some((tag) => tag === filterTag);
-        if (result) {
-            return item;
-        }
-    });
+    return frontMatter.filter((item) => item.tags.some((tag) => tag === filterTag));
 };
 const Blog = ({ frontMatter }: { frontMatter: FrontMatterProps[] }) => {
     const router = useRouter();
     const { tag } = router.query;
     const articleFrontMatter = FilterTag({ frontMatter, filterTag: tag });
 
-    console.log({ articleFrontMatter });
     return (
         <>
             <NextSeo />

@@ -1,10 +1,12 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { Box, Alert, Code, Heading, Link, Text, Divider, useColorMode } from '@chakra-ui/react';
+import { Box, Alert, Code, Heading, Link, Text, Divider, useColorMode, IconButton, Icon } from '@chakra-ui/react';
 import React, { FC } from 'react';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import theme from 'prism-react-renderer/themes/shadesOfPurple';
 import styled from '@emotion/styled';
 import { MDXProviderComponents } from '@mdx-js/react';
+import { CopyIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
+import { useRouter } from 'next/router';
 
 type Language =
     | 'markup'
@@ -159,11 +161,24 @@ const CustomInlineCode = (props: any) => {
 // @ts-ignore
 const MdxComponentStyle: MDXProviderComponents = {
     h1: (props: any) => <Heading id={props.children} as="h1" size="xl" my={4} {...props} />,
-    h2: (props: any) => (
-        <Heading id={props.children} as="h2" size="lg" fontWeight="bold" mt={10} mb={4} {...props}>
-            <Link color="#58b0b4" {...props} href={`#${props.children}`} />
-        </Heading>
-    ),
+    h2: (props: any) => {
+        let url = '';
+        if (typeof window !== 'undefined') {
+            url = window.location.host + window.location.pathname;
+        }
+        return (
+            <Heading id={props.children} as="h2" size="lg" fontWeight="bold" mt={10} mb={4} {...props}>
+                <Link color="#58b0b4" {...props} href={`#${props.children}`} />
+                <IconButton
+                    aria-label="Copy"
+                    icon={<Icon as={CopyIcon} color="gray.300" />}
+                    size="xs"
+                    onClick={() => navigator.clipboard.writeText(`${url}#${props.children}`)}
+                    variant="unstyled"
+                />
+            </Heading>
+        );
+    },
     h3: (props: any) => <Heading id={props.children} as="h3" size="md" fontWeight="bold" mt={8} mb={3} {...props} />,
     h4: (props: any) => <Heading as="h4" size="sm" fontWeight="bold" mt={6} mb={2.5} {...props} />,
     h5: (props: any) => <Heading as="h5" size="xs" fontWeight="bold" mt={6} mb={2.5} {...props} />,
