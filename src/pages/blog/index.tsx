@@ -1,65 +1,45 @@
 import { getArticleInformation } from '../../lib/blog';
-import NextLink from 'next/link';
+import Articles from '../../components/blog/Articles';
+import { FrontMatterProps } from '../../lib/type';
 import React from 'react';
 
 import { NextSeo } from 'next-seo';
 
-import { Box, Container, Flex, Heading, Stack, Tag, Text } from '@chakra-ui/react';
+import { Container, Flex, Heading } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
 
-type FrontMatterProps = {
-    tags: [string];
-    title: string;
-    summary: string;
-    postId: string;
+const FilterTag = ({ frontMatter, filterTag }: { frontMatter: FrontMatterProps[]; filterTag?: string | string[] }) => {
+    if (!filterTag && filterTag?.length !== 1) {
+        return frontMatter;
+    }
+
+    return frontMatter.filter((item) => {
+        const result = item.tags.some((tag) => tag === filterTag);
+        if (result) {
+            return item;
+        }
+    });
 };
-const Blog = ({ frontMatter }: { frontMatter: FrontMatterProps[] }) => (
-    <>
-        <NextSeo />
-        <Container as="main" justifyContent="center" alignItems="flex-start" width="100%" mx="auto" pt={8}>
-            <Flex flexDirection="column" justifyContent="flex-start" alignItems="flex-start">
-                <Heading as="h1" size="xl">
-                    Blog
-                </Heading>
-            </Flex>
+const Blog = ({ frontMatter }: { frontMatter: FrontMatterProps[] }) => {
+    const router = useRouter();
+    const { tag } = router.query;
+    const articleFrontMatter = FilterTag({ frontMatter, filterTag: tag });
 
-            <Flex flexDirection="column" justifyContent="flex-start" alignItems="flex-start">
-                <Stack>
-                    {frontMatter.map((item) => {
-                        const { tags, title, summary, postId } = item;
-                        return (
-                            <>
-                                <Box pt={5} as="div" key={`${title}-article`}>
-                                    <NextLink href={`/blog/${encodeURIComponent(postId)}`} passHref>
-                                        <Box as="a">
-                                            <Heading fontSize="xl">{title}</Heading>
-                                            <Text fontSize="md" color="gray.500" mt={2}>
-                                                {summary}
-                                            </Text>
-                                        </Box>
-                                    </NextLink>
-                                    {tags.length > 0 &&
-                                        tags.map((tag) => (
-                                            <Tag
-                                                as="a"
-                                                href={`blog/${postId}`}
-                                                mx={0.5}
-                                                my={2}
-                                                size="md"
-                                                key={`${title}-${tag}`}
-                                                variant="solid"
-                                                backgroundColor="#76ced3">
-                                                {tag}
-                                            </Tag>
-                                        ))}
-                                </Box>
-                            </>
-                        );
-                    })}
-                </Stack>
-            </Flex>
-        </Container>
-    </>
-);
+    console.log({ articleFrontMatter });
+    return (
+        <>
+            <NextSeo />
+            <Container as="main" justifyContent="center" alignItems="flex-start" width="100%" mx="auto" pt={8}>
+                <Flex flexDirection="column" justifyContent="flex-start" alignItems="flex-start">
+                    <Heading as="h1" size="xl">
+                        Blog
+                    </Heading>
+                    <Articles frontMatter={articleFrontMatter} />
+                </Flex>
+            </Container>
+        </>
+    );
+};
 
 export async function getStaticProps() {
     const frontMatter = await getArticleInformation();

@@ -10,14 +10,16 @@ export const getRawArticleByPostId = (postId: string): GrayMatterFile<string> =>
     return fileContents;
 };
 // TODO: 文章要根據時間排序
-export const getAllArticles = () =>
-    glob.sync('src/posts/**/*.md', {}).map(
+export const getAllArticles = () => {
+    const all = glob.sync('src/posts/**/*.md', {}).map(
         (item) =>
             item
                 .replace(/\/index.md$/, '')
                 .split('/')
                 .slice(-1)[0]
     );
+    return all;
+};
 export const getArticleInformation = () => {
     const allPost = getAllArticles();
     return allPost.map((item) => {

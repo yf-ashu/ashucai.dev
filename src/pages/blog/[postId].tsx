@@ -1,30 +1,9 @@
-import BlogPost from '../../components/BlogPost';
+import Article from '../../components/blog/Article';
 import { getAllArticles, getRawArticleByPostId } from '../../lib/blog';
 import React from 'react';
 import { serialize } from 'next-mdx-remote/serialize';
-import { MDXRemote } from 'next-mdx-remote';
-// import link from `remark-autolink-headings`
-// const fetcher = async (query, postId) => {
-// 	const apiUrl = '/api/blog';
-// 	const payloads: Config = { method: 'POST',
-// 		headers: { 'Content-type': 'application/json' },
-// 		data: JSON.stringify({ query,
-// 			variables: { postId } }) };
-// 	try {
-// 		const result = await fetchApi<{data:string}>({ apiUrl,
-// 			payloads });
-// 		return result.data;
-// 	} catch (error) {
-// 		console.log({ error });
-// 	}
-// };
 
-// https://nextjs.org/docs/routing/dynamic-routes
-const Post = ({ source }: { source: any }) => (
-    <BlogPost>
-        <MDXRemote {...source} />
-    </BlogPost>
-);
+const ArticleRouter = ({ source }: { source: any }) => <Article source={source} />;
 
 // function transformer(ast) {
 // 	// slugs.reset();
@@ -49,7 +28,6 @@ export async function getStaticProps({ params }: { params: { postId: string } })
     const { postId } = params;
     const { content } = await getRawArticleByPostId(postId);
     const mdxSource = await serialize(content);
-    console.log({ mdxSource });
     return { props: { source: mdxSource } };
 }
 export async function getStaticPaths() {
@@ -60,4 +38,4 @@ export async function getStaticPaths() {
     };
 }
 
-export default Post;
+export default ArticleRouter;

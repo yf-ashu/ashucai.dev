@@ -28,3 +28,10 @@ export interface BlogApi {
     getAllArticles: () => void;
     getPostInformation: () => void;
 }
+
+export type FrontMatterProps = {
+    tags: [string];
+    title: string;
+    summary: string;
+    postId: string;
+};
