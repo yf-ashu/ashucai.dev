@@ -22,12 +22,6 @@ const GlobalStyle: FC<Props> = ({ children }) => (
                     background-color: #76ced3;
                     color: #fefefe;
                 }
-                @font-face {
-                    font-family: 'Menlo Regular';
-                    font-style: normal;
-                    font-weight: normal;
-                    src: local('Menlo Regular'), url('Menlo-Regular.woff') format('woff');
-                }
                 *:focus {
                     box-shadow: none !important;
                 }
@@ -35,6 +29,7 @@ const GlobalStyle: FC<Props> = ({ children }) => (
                 html {
                     min-width: 360px;
                     scroll-behavior: smooth;
+                    scroll-padding-top: 5rem;
                 }
 
                 #__next {

@@ -10,5 +10,4 @@ const theme = {
         body: 'Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"',
     },
 };
-// #26282b
 export default theme;

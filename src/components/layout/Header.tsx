@@ -24,7 +24,8 @@ const Header = () => {
                 as="nav"
                 pt={4}
                 px={8}
-                mt={10}
+                mt={4}
+                maxWidth={1128}
                 mx="auto">
                 <Box pt={4}>
                     <NextLink href="/blog" passHref>

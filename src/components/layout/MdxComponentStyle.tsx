@@ -110,7 +110,6 @@ const LineContent = styled.span`
     display: table-cell;
 `;
 const CustomCode = ({ children, className }: { children: React.ReactNode; className: string }) => {
-    console.log({ className });
     const language = className.replace(/language-/, '') as Language;
     // @ts-ignore
     return (
@@ -147,15 +146,29 @@ const CustomCode = ({ children, className }: { children: React.ReactNode; classN
         </>
     );
 };
+
+const CustomInlineCode = (props: any) => {
+    const { colorMode } = useColorMode();
+    const bgColor = {
+        light: '#ff3434',
+        dark: '#ff8805',
+    };
+    return <Code variantColor="yellow" fontSize="0.8em" {...props} color={bgColor[colorMode]} px={1} />;
+};
+
 // @ts-ignore
 const MdxComponentStyle: MDXProviderComponents = {
-    h1: (props: any) => <Heading as="h1" size="xl" my={4} {...props} />,
-    h2: (props: any) => <Heading as="h2" size="lg" fontWeight="bold" mt={10} mb={4} {...props} />,
-    h3: (props: any) => <Heading as="h3" fontSize="1.6rem" fontWeight="bold" mt={8} mb={3} {...props} />,
-    h4: (props: any) => <Heading as="h4" size="md" fontWeight="bold" mt={6} mb={2.5} {...props} />,
-    h5: (props: any) => <Heading as="h5" size="sm" fontWeight="bold" mt={6} mb={2.5} {...props} />,
-    h6: (props: any) => <Heading as="h5" size="xs" fontWeight="bold" mt={6} mb={2.5} {...props} />,
-    inlineCode: (props: any) => <Code variantColor="yellow" fontSize="0.8em" {...props} color="#ff3434" px={1} />,
+    h1: (props: any) => <Heading id={props.children} as="h1" size="xl" my={4} {...props} />,
+    h2: (props: any) => (
+        <Heading id={props.children} as="h2" size="lg" fontWeight="bold" mt={10} mb={4} {...props}>
+            <Link color="#58b0b4" {...props} href={`#${props.children}`} />
+        </Heading>
+    ),
+    h3: (props: any) => <Heading id={props.children} as="h3" size="md" fontWeight="bold" mt={8} mb={3} {...props} />,
+    h4: (props: any) => <Heading as="h4" size="sm" fontWeight="bold" mt={6} mb={2.5} {...props} />,
+    h5: (props: any) => <Heading as="h5" size="xs" fontWeight="bold" mt={6} mb={2.5} {...props} />,
+    h6: (props: any) => <Heading as="h5" size="xs" mt={6} mb={2.5} {...props} />,
+    inlineCode: CustomInlineCode,
     br: (props: any) => <Box height="24px" {...props} />,
     hr: () => <Divider my={4} w="100%" h="1em" color="gray.200" />,
     table: Table,
