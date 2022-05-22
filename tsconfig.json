@@ -1,0 +1,68 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "sourceMap": false,
+    "target": "es5",
+    "jsx": "preserve",
+    "module": "esnext",
+    "lib": [
+      "es2017",
+      "es7",
+      "es6",
+      "dom"
+    ],
+    "strict": true,
+    // "noImplicitAny": true,
+    "removeComments": true,
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/@types"
+    ],
+    "types": [
+      "react"
+    ],
+    "declaration": true,
+    "rootDirs": [
+      "src",
+      "test/stories",
+      ".storybook"
+    ],
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "skipLibCheck": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "allowJs": true,
+    "incremental": true
+  },
+  "include": [
+    "./src/**/*.d.ts",
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "./test/**/*.ts",
+    "./test/**/*.tsx",
+    ".eslintrc.js"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
+  "paths": {
+    "@lib/*": [
+      "src/lib"
+    ],
+    "@pages/*": [
+      "./src/pages/*"
+    ],
+    "@components/*": [
+      "./src/components/*"
+    ],
+    "@utilities/*": [
+      "./src/utilities/*"
+    ]
+  }
+}
