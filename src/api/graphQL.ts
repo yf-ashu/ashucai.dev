@@ -1,4 +1,4 @@
-import { getRawArticleByPostId } from '../../../lib/blog';
+import { getRawArticleByPostId } from './blog';
 import { ApolloServer, gql } from 'apollo-server-micro';
 
 const typeDefs = gql`

@@ -1,4 +1,4 @@
-import { FrontMatterProps } from '../../lib/type';
+import { FrontMatterProps } from '../../api/type';
 import { Box, Divider, Flex, Heading, Stack, Tag, Text } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import React from 'react';

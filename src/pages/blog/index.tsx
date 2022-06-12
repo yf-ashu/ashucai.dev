@@ -1,6 +1,6 @@
-import { getArticleInformation } from '../../lib/blog';
+import { getArticleInformation } from '../../api/blog';
 import Articles from '../../components/blog/Articles';
-import { FrontMatterProps } from '../../lib/type';
+import { FrontMatterProps } from '../../api/type';
 import React from 'react';
 
 import { NextSeo } from 'next-seo';

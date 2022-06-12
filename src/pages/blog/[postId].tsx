@@ -1,5 +1,5 @@
 import Article from '../../components/blog/Article';
-import { getAllArticles, getRawArticleByPostId } from '../../lib/blog';
+import { getAllArticles, getRawArticleByPostId } from '../../api/blog';
 import React from 'react';
 import { serialize } from 'next-mdx-remote/serialize';
 
