@@ -8,10 +8,10 @@ const Tags = ({ tags, title }: { tags: string[]; title: string }) => {
         <>
             {tags.length > 0 &&
                 tags.map((tag) => (
-                    <NextLink href={`blog?tag=${tag}`} passHref>
+                    <NextLink key={`${title}-${tag}`} href={`/blog?tag=${tag}`} passHref>
                         <Tag
                             as="a"
-                            href={`blog?tag=${tag}`}
+                            href={`/blog?tag=${tag}`}
                             mt={5}
                             mr={2}
                             size="sm"
@@ -33,20 +33,18 @@ const Articles = ({ frontMatter }: { frontMatter: FrontMatterProps[] }) => {
                 {frontMatter.map((item) => {
                     const { tags, title, summary, postId } = item;
                     return (
-                        <>
-                            <Box pt={5} as="div" key={`${title}-article`}>
-                                <NextLink href={`/blog/${encodeURIComponent(postId)}`} passHref>
-                                    <Box as="a">
-                                        <Heading fontSize="xl">{title}</Heading>
-                                        <Text fontSize="md" color="gray.500" mt={2}>
-                                            {summary}
-                                        </Text>
-                                    </Box>
-                                </NextLink>
-                                <Tags tags={tags} title={title} />
-                                <Divider my={3} w="100%" h="1em" color="gray.900" />
-                            </Box>
-                        </>
+                        <Box pt={5} as="div" key={`${title}-article`}>
+                            <NextLink href={`/blog/${encodeURIComponent(postId)}`} passHref>
+                                <Box as="a">
+                                    <Heading fontSize="xl">{title}</Heading>
+                                    <Text fontSize="md" color="gray.500" mt={2}>
+                                        {summary}
+                                    </Text>
+                                </Box>
+                            </NextLink>
+                            <Tags tags={tags} title={title} />
+                            <Divider my={3} w="100%" h="1em" color="gray.900" />
+                        </Box>
                     );
                 })}
             </Stack>

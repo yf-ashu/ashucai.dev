@@ -112,7 +112,7 @@ const LineContent = styled.span`
     display: table-cell;
 `;
 const CustomCode = ({ children, className }: { children: React.ReactNode; className: string }) => {
-    const language = className.replace(/language-/, '') as Language;
+    const language = className?.replace(/language-/, '') as Language;
     // @ts-ignore
     return (
         <>
@@ -153,9 +153,9 @@ const CustomInlineCode = (props: any) => {
     const { colorMode } = useColorMode();
     const bgColor = {
         light: '#ff3434',
-        dark: '#ff8805',
+        dark: '#FFCF00',
     };
-    return <Code variantColor="yellow" fontSize="0.8em" {...props} color={bgColor[colorMode]} px={1} />;
+    return <Code fontWeight={700} fontSize="1em" {...props} color={bgColor[colorMode]} px={1} />;
 };
 
 // @ts-ignore
